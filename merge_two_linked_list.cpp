@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+ifstream in("input.txt");
+ofstream out("output.txt");
 struct Node {
     int n;
     Node* next;
@@ -12,7 +14,7 @@ struct Node {
 //travarsal
 void rec(Node* head) {
     while(head != nullptr) {
-        cout << head -> n << ' ';
+        out << head -> n << ' ';
         head = head -> next;
     }
 }
@@ -39,7 +41,7 @@ void insert(Node*& head, int pos, int val) {
     //temp holo je position a add korbo oi position er ager index er pointer
     // cout << temp -> n << "end" << endl;
     if(temp == nullptr) {
-        cout << "Position out of bounds!" << endl;
+        out << "Position out of bounds!" << endl;
         return;
     }
     newNode->next = temp->next;
@@ -66,12 +68,12 @@ void delete1(Node* &head, int position) {
 
 int main() {
     int n;
-    cin >> n;
+    in >> n;
     Node* head = nullptr;
     Node* tail = nullptr;
     for(int i = 0; i < n; i++) {
         int x;
-        cin >> x;
+        in >> x;
         struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
         temp->n = x;
         temp->next = NULL;
@@ -91,10 +93,10 @@ int main() {
     Node* jk = nullptr;
     Node* kj = nullptr;
     int m;
-    cin >> m;
+    in >> m;
     while(m--) {
         int x;
-        cin >> x;
+        in >> x;
         struct Node* temp = (struct Node*)malloc(sizeof(struct Node));
         temp->n = x;
         temp->next = NULL;
@@ -108,18 +110,19 @@ int main() {
         }
     } 
 
-    cout << endl;
+    out << endl;
     rec(jk);//2nd linked list run
-    cout << endl;
+    out << endl;
     merge(jk, tail);//merge first and second linked list
     //rec(head);//after merger display first linked list
     //cout << endl;
     insert(head, 3, 100);//add position 3 at value 100
     rec(head);//after add showing display our final linked list
-    cout << endl;
+    out << endl;
     delete1(head, 5);
     rec(head);
-
+    in.close();
+    out.close();
     return 0;
 }
 

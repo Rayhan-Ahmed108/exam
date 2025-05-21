@@ -1,12 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 int main() {
+    ifstream in("input.txt");
+    ofstream out("output.txt");
     int n;
-    cin >> n;
-    vector<vector<int>>v(n, vector<int>(n));
+    in >> n;
+    
+    vector<vector<int> >v(n, vector<int>(n));
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
-            cin >> v[i][j];
+            in >> v[i][j];
         }
     }
     for(int k = 0; k < n; k++) {
@@ -18,8 +21,11 @@ int main() {
     }
     for(int i = 0; i < n; i++) {
         for(int j = 0; j < n; j++) {
-            cout << v[i][j] << ' ';
+            out << v[i][j] << ' ';
         }
-        cout << endl;
+        out << endl;
     }
+    in.close();
+    out.close();
+
 }
